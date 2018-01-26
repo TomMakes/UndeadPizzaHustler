@@ -37,7 +37,6 @@ public class ZedScript : MonoBehaviour {
 			isActive = true;
 		} else {
 			isActive = false;
-			Reset ();
 		}
 
 	}
@@ -46,6 +45,7 @@ public class ZedScript : MonoBehaviour {
 	{
 		gameObject.transform.position = startPoint.transform.position;
 		position = gameObject.transform.position;
+		isActive = true;
 	}
 
 	bool IsColliding()
