@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
     public List<GameObject> zedList;
-	bool runEnemy;
+	public bool runEnemy, recentlySpawned=false, toDelete=false;
+    public float spawnBoundry=8.0f;//point at which to spawn a new zed
+    public int maxZeds = 3;
+    public GameObject ZedPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -29,21 +32,40 @@ public class EnemyManager : MonoBehaviour {
 		}
 
 		if (runEnemy) {
-			foreach (GameObject obby in zedList) {
+            if (zedList.Count < maxZeds && ! recentlySpawned)
+            {
+                zedList.Add(Instantiate(ZedPrefab));
+                ZedScript temp = zedList[zedList.Count - 1].GetComponent<ZedScript>();
+                temp.Spawn((int)Random.Range(0, 3));
+                recentlySpawned = true;
+            }
+
+            recentlySpawned = false;
+            foreach (GameObject obby in zedList) {
 				//Grab the script from the enemy
-				ZedScript zedScript = obby.GetComponent<ZedScript> ();
+				ZedScript zeddy = obby.GetComponent<ZedScript> ();          
+                if(zeddy.isActive)
+                {
+                 if(zeddy.transform.position.x > spawnBoundry)
+                    {
+                        recentlySpawned = true;
+                    }
+                }
+                else
+                {
+                    toDelete = true;
+
+                }
 
 
+                if(toDelete==true)
+                {//garbage collection
+                    zedList.RemoveAt(0);
+                    toDelete = false;
+                }
 				
 				//If there are more than one enemy type take a random enemy obstacle and run it back through the screen
-				if (zedList.Count > 1) {
-					int random = Random.Range (0, zedList.Count);
-					zedList [random].GetComponent<ZedScript> ().Reset ();
-					break;
-				} else {
-					zedList [0].GetComponent<ZedScript> ().Reset ();
-					break;
-				}
+			
 			}
 		}
 
