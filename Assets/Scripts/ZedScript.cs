@@ -7,6 +7,8 @@ public class ZedScript : MonoBehaviour {
 	//Speed at which enemy travels from right to left of screen
 	public Vector3 speed;
 
+	public Vector3 position;
+
 	//Is this lane a safe or deadly lane? True means it is a safe lane
 	public bool lane0, lane1, lane2, lane3;
 
@@ -22,27 +24,32 @@ public class ZedScript : MonoBehaviour {
 	void Start () {
 		//Make the enemy begin at the start point
 		gameObject.transform.position = startPoint.transform.position;
+		position = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		//Keep moving the enemy to the left of the screen
-		while (gameObject.transform.position.x > endPoint.transform.position.x) {
-			gameObject.transform.position -= speed;
+		if (gameObject.transform.position.x > endPoint.transform.position.x) {
+			position -= speed;
+			gameObject.transform.position = position;
 			isActive = true;
+		} else {
+			isActive = false;
+			Reset ();
 		}
-		isActive = false;
 
 	}
 
 	public void Reset()
 	{
 		gameObject.transform.position = startPoint.transform.position;
+		position = gameObject.transform.position;
 	}
 
 	bool IsColliding()
 	{
-		
+		return false;
 	}
 }

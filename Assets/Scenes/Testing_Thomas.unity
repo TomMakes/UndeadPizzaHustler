@@ -390,13 +390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f1e967f76c40e408603871034a4bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1, y: 0, z: 0}
+  speed: {x: 0.1, y: 0, z: 0}
   lane0: 1
   lane1: 1
   lane2: 1
   lane3: 0
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
+  startPoint: {fileID: 1229601543}
+  endPoint: {fileID: 1743060357}
+  isActive: 0
 --- !u!1 &1743060357
 GameObject:
   m_ObjectHideFlags: 0

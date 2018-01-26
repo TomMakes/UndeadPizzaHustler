@@ -26,10 +26,10 @@ public class EnemyManager : MonoBehaviour {
 				
 			//If there are more than one enemy type take a random enemy obstacle and run it back through the screen
 			if (zedList.Count > 1) {
-				zedList [Random.Range (0, zedList.Count-1)].GetComponent<ZedScript> ().Reset ();
+				zedList [Random.Range (0, zedList.Count - 1)].GetComponent<ZedScript> ().Reset ();
+			} else {
+				zedList [0].GetComponent<ZedScript> ().Reset ();
 			}
-			else{
-				zedList[0].GetComponent<ZedScript> ().Reset ();
         }
 
 
