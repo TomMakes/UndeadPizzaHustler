@@ -6,12 +6,14 @@ public class EnemyManager : MonoBehaviour {
     public List<GameObject> zedList;
 	public bool runEnemy, recentlySpawned=false, toDelete=false;
     public float spawnBoundry=8.0f;//point at which to spawn a new zed
-    public int maxZeds = 3;
+    public int maxZeds = 4;
     public GameObject ZedPrefab;
+    public GameObject Player;
+    PlayerManager playerScript;
 
 	// Use this for initialization
 	void Start () {
-       
+        playerScript = Player.GetComponent<PlayerManager>();
 		
 	}
 	
@@ -21,14 +23,7 @@ public class EnemyManager : MonoBehaviour {
 		foreach (GameObject obby in zedList) {
 			//Grab the script from the enemy
 			ZedScript zedScript = obby.GetComponent<ZedScript> ();
-
-			//If there is an enemy currently running through the game
-			if (zedScript.isActive == true) {
-				runEnemy = false;
-				break;
-			} else {
-				runEnemy = true;
-			}
+			
 		}
 
 		if (runEnemy) {
@@ -36,10 +31,11 @@ public class EnemyManager : MonoBehaviour {
             {
                 zedList.Add(Instantiate(ZedPrefab));
                 ZedScript temp = zedList[zedList.Count - 1].GetComponent<ZedScript>();
-                temp.Spawn((int)Random.Range(0, 3));
+                temp.Spawn((int)Random.Range(0, 4));
                 recentlySpawned = true;
             }
 
+            int i = 0;//only need to check the 3 closest zeds for collisions.
             recentlySpawned = false;
             foreach (GameObject obby in zedList) {
 				//Grab the script from the enemy
@@ -50,6 +46,19 @@ public class EnemyManager : MonoBehaviour {
                     {
                         recentlySpawned = true;
                     }
+
+                 if(i<=4)
+                    {
+                        if(zeddy.position.x < Player.transform.position.x + 1.25f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+                        {//if the first 3 zeds are close enough to the player to maybe hit, check em
+                            if(zeddy.whichLane == playerScript.layer){
+                                Debug.Log("HIT!");
+                            }
+                        }
+                        i++;
+                    }
+
+
                 }
                 else
                 {

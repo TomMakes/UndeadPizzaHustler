@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 public class PlayerManager : MonoBehaviour {
-    int layer=0;
+    public int layer=0;
     Vector3 newPosition;
 
 
