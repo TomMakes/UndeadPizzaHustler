@@ -24,7 +24,7 @@ public class ZedScript : MonoBehaviour {
         //Make the enemy begin at the start point
         position.x = startX;
         position.y = -3.875f + (2.25f * whichLane);
-        position.z = 0;
+        position.z = 1;
         gameObject.transform.position = position;
 
 	}
