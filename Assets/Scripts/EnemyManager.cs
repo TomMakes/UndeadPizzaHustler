@@ -49,7 +49,7 @@ public class EnemyManager : MonoBehaviour {
 
                  if(i<=4)
                     {
-                        if(zeddy.position.x < Player.transform.position.x + 1.25f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+                        if(zeddy.position.x < Player.transform.position.x + 2.5f && zeddy.position.x > Player.transform.position.x - 2.5f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
                             if(zeddy.whichLane == playerScript.layer){
                                 Debug.Log("HIT!");
