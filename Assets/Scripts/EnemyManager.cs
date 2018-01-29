@@ -57,15 +57,12 @@ public class EnemyManager : MonoBehaviour {
                         }
                         i++;
                     }
-
-
                 }
                 else
                 {
                     toDelete = true;
 
                 }
-
 
                 if(toDelete==true)
                 {//garbage collection
