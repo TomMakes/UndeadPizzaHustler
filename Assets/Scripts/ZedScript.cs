@@ -8,9 +8,6 @@ public class ZedScript : MonoBehaviour {
 	public Vector3 speed;
 	public Vector3 position;
 
-	//Is this lane a safe or deadly lane? True means it is a safe lane
-	public bool lane0, lane1, lane2, lane3;
-
     //What lane in this Zed in?
     public int whichLane;
 
