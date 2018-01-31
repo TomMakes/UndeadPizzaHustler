@@ -74,21 +74,21 @@ public class EnemyManager : MonoBehaviour {
 
 
 
-                if (toDelete == true)
-                {//garbage collection
-                    zeddy.Purge();
-                    Object.Destroy(obby);
-                    waveList.Remove(obby);
-                    //zedList.RemoveAt(0);
-                    toDelete = false;
-                }
+               
 
                 //If there are more than one enemy type take a random enemy obstacle and run it back through the screen
 
             }
         }
 
-
+        if (toDelete == true)
+        {//garbage collection
+            WaveScript wavey = waveList[0].GetComponent<WaveScript>();
+            wavey.Purge();
+            Destroy(waveList[0]);
+            waveList.RemoveAt(0);            
+            toDelete = false;
+        }
 
     }
 }
