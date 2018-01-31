@@ -32,8 +32,8 @@ public class EnemyManager : MonoBehaviour {
             {
                 waveList.Add(Instantiate(WavePrefab));
                 WaveScript temp = waveList[waveList.Count - 1].GetComponent<WaveScript>();
-                //int q = Random.Range(0, 15);
-                int q = testVar;
+                int q = Random.Range(0, 15);
+                //int q = testVar;
                 Debug.Log(q);
                 temp.Spawn(q);                
             }

@@ -392,14 +392,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abb3990ee70cb94583cc7c9dc8a4497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zedList: []
+  waveList: []
   runEnemy: 1
   recentlySpawned: 0
   toDelete: 0
-  spawnBoundry: 8
-  maxZeds: 5
-  ZedPrefab: {fileID: 1044424447882388, guid: 0cfedc0ffd5e1504b9ea710597556f8d, type: 2}
+  spawnBoundry: 7
+  maxZeds: 4
+  WavePrefab: {fileID: 1444344233489154, guid: 1eac119394e9a954cb01f7b5bcb0a6e8, type: 2}
   Player: {fileID: 980173883}
+  testVar: 0
 --- !u!1 &1305281577
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +428,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f0d2fa4cd3d0141b77b4d60dbcda24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  xPosition: 0
+  startX: 0
+  individuals: []
+  isActive: 0
+  ZedPrefab: {fileID: 0}
 --- !u!4 &1305281579
 Transform:
   m_ObjectHideFlags: 0
