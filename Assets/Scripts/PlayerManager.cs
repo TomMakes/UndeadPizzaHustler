@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         newPosition = gameObject.transform.position;
-        newPosition.y = -3.875f + (2.25f * layer);
+        newPosition.y = -3.75f + (2.5f * layer);
 
         if (Input.GetKeyDown("w"))
         {

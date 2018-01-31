@@ -8,9 +8,6 @@ public class ZedScript : MonoBehaviour {
 	public Vector3 speed;
 	public Vector3 position;
 
-	//Is this lane a safe or deadly lane? True means it is a safe lane
-	public bool lane0, lane1, lane2, lane3;
-
     //What lane in this Zed in?
     public int whichLane;
 
@@ -23,7 +20,7 @@ public class ZedScript : MonoBehaviour {
 	void Start () {
         //Make the enemy begin at the start point
         position.x = startX;
-        position.y = -3.875f + (2.25f * whichLane);
+        position.y = -3.75f + (2.5f * whichLane);
         position.z = 1;
         gameObject.transform.position = position;
 
@@ -33,7 +30,7 @@ public class ZedScript : MonoBehaviour {
     {
         //Make the enemy begin at the start point
         position.x = startX;
-        position.y = -3.875f + (2.25f * incLane);
+        position.y = -3.75f + (2.5f * incLane);
         position.z = 0;
         gameObject.transform.position = position;
         isActive = true;
