@@ -12,9 +12,12 @@ public class EnemyManager : MonoBehaviour {
     PlayerManager playerScript;
     public int testVar;
 
+
+
 	// Use this for initialization
 	void Start () {
         playerScript = Player.GetComponent<PlayerManager>();
+        changeImage = GetComponent<SpriteRenderer>();
 		
 	}
 	
@@ -38,7 +41,7 @@ public class EnemyManager : MonoBehaviour {
                 temp.Spawn(q);                
             }
 
-          
+
             recentlySpawned = false;
             foreach (GameObject obby in waveList) {
 				//Grab the script from the enemy
@@ -48,12 +51,15 @@ public class EnemyManager : MonoBehaviour {
                  if(zeddy.xPosition > spawnBoundry)
                     {
                         recentlySpawned = true;
+
                         
                     }                
                     if(zeddy.xPosition < Player.transform.position.x + 2.5f && zeddy.xPosition > Player.transform.position.x - 2.5f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
                             if(zeddy.IsColliding(playerScript.layer)){
+
                                 Debug.Log("HIT!");
+                                playerScript.OnHit(1,200);
                             }
                         }                  
                     
