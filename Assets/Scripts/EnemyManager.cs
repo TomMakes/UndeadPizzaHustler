@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
-    public List<GameObject> zedList;
+    public List<GameObject> waveList;
 	public bool runEnemy, recentlySpawned=false, toDelete=false;
     public float spawnBoundry=8.0f;//point at which to spawn a new zed
-    public int maxZeds = 4;
-    public GameObject ZedPrefab;
+    public int maxZeds = 1;
+    public GameObject WavePrefab;
     public GameObject Player;
     PlayerManager playerScript;
+    public int testVar;
 
 	// Use this for initialization
 	void Start () {
@@ -20,43 +21,42 @@ public class EnemyManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		foreach (GameObject obby in zedList) {
+		foreach (GameObject obby in waveList) {
 			//Grab the script from the enemy
-			ZedScript zedScript = obby.GetComponent<ZedScript> ();
+			WaveScript wScript = obby.GetComponent<WaveScript> ();
 			
 		}
 
 		if (runEnemy) {
-            if (zedList.Count < maxZeds && ! recentlySpawned)
+            if (waveList.Count < maxZeds && !recentlySpawned)
             {
-                zedList.Add(Instantiate(ZedPrefab));
-                ZedScript temp = zedList[zedList.Count - 1].GetComponent<ZedScript>();
-                temp.Spawn((int)Random.Range(0, 4));
-                recentlySpawned = true;
+                waveList.Add(Instantiate(WavePrefab));
+                WaveScript temp = waveList[waveList.Count - 1].GetComponent<WaveScript>();
+                //int q = Random.Range(0, 15);
+                int q = testVar;
+                Debug.Log(q);
+                temp.Spawn(q);                
             }
 
-            int i = 0;//only need to check the 3 closest zeds for collisions.
+          
             recentlySpawned = false;
-            foreach (GameObject obby in zedList) {
+            foreach (GameObject obby in waveList) {
 				//Grab the script from the enemy
-				ZedScript zeddy = obby.GetComponent<ZedScript> ();          
+				WaveScript zeddy = obby.GetComponent<WaveScript> ();          
                 if(zeddy.isActive)
                 {
-                 if(zeddy.transform.position.x > spawnBoundry)
+                 if(zeddy.xPosition > spawnBoundry)
                     {
                         recentlySpawned = true;
-                    }
-
-                 if(i<=4)
-                    {
-                        if(zeddy.position.x < Player.transform.position.x + 2.5f && zeddy.position.x > Player.transform.position.x - 2.5f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+                        
+                    }                
+                    if(zeddy.xPosition < Player.transform.position.x + 2.5f && zeddy.xPosition > Player.transform.position.x - 2.5f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
-                            if(zeddy.whichLane == playerScript.layer){
+                            if(zeddy.IsColliding(playerScript.layer)){
                                 Debug.Log("HIT!");
                             }
-                        }
-                        i++;
-                    }
+                        }                  
+                    
                 }
                 else
                 {
@@ -66,7 +66,7 @@ public class EnemyManager : MonoBehaviour {
 
                 if(toDelete==true)
                 {//garbage collection
-                    zedList.RemoveAt(0);
+                    waveList.RemoveAt(0);
                     toDelete = false;
                 }
 				
