@@ -6,6 +6,7 @@ public class Parallax_Movement : MonoBehaviour {
 
     Vector3 newPos;
     Vector3 newScale;
+    public Vector3 speed;
     
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class Parallax_Movement : MonoBehaviour {
 	void Update () {
         // move the sprite down; currently hard coded but can be adjusted for speed
         newPos = gameObject.transform.position;
-        newPos.x -= 0.10f;
+        newPos.x -= speed.x * Time.deltaTime;
         // checks if the sprite is outside the camera; yes, hard coded for now until I can figure out the right command
         // to check whether the camera can see it
         if(newPos.x < -25.0f){
