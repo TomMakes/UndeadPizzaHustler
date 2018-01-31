@@ -19,8 +19,7 @@ public class EnemyManager : MonoBehaviour {
     void Start()
     {
         playerScript = Player.GetComponent<PlayerManager>();
-
-        changeImage = GetComponent<SpriteRenderer>();
+        
 		
 	}
 	
@@ -77,6 +76,7 @@ public class EnemyManager : MonoBehaviour {
 
                 if (toDelete == true)
                 {//garbage collection
+                    zeddy.Purge();
                     Object.Destroy(obby);
                     waveList.Remove(obby);
                     //zedList.RemoveAt(0);

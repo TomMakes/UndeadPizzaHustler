@@ -113,5 +113,15 @@ public class WaveScript : MonoBehaviour {
         }
 
     }
+
+    
+
+    public void Purge() { 
+        foreach(GameObject Zed in individuals)
+        {
+            Object.Destroy(Zed);
+            individuals.Remove(Zed);
+        }
+    }
 }
 
