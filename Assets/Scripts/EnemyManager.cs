@@ -5,15 +5,18 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
     public List<GameObject> zedList;
 	public bool runEnemy, recentlySpawned=false, toDelete=false;
-    public float spawnBoundry=8.0f;//point at which to spawn a new zed
+    public float spawnBoundry=8.0f;
+    //point at which to spawn a new zed
     public int maxZeds = 4;
     public GameObject ZedPrefab;
     public GameObject Player;
     PlayerManager playerScript;
+    SpriteRenderer changeImage;
 
 	// Use this for initialization
 	void Start () {
         playerScript = Player.GetComponent<PlayerManager>();
+        changeImage = GetComponent<SpriteRenderer>();
 		
 	}
 	
@@ -35,7 +38,8 @@ public class EnemyManager : MonoBehaviour {
                 recentlySpawned = true;
             }
 
-            int i = 0;//only need to check the 3 closest zeds for collisions.
+            int i = 0;
+            //only need to check the 3 closest zeds for collisions.
             recentlySpawned = false;
             foreach (GameObject obby in zedList) {
 				//Grab the script from the enemy
@@ -49,10 +53,14 @@ public class EnemyManager : MonoBehaviour {
 
                  if(i<=4)
                     {
-                        if(zeddy.position.x < Player.transform.position.x + 1.25f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
-                        {//if the first 3 zeds are close enough to the player to maybe hit, check em
-                            if(zeddy.whichLane == playerScript.layer){
+                        if(zeddy.position.x < Player.transform.position.x + 1.25f)
+                        //CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+                        {
+                            //if the first 3 zeds are close enough to the player to maybe hit, check em
+                            if(zeddy.whichLane == playerScript.layer)
+                            {
                                 Debug.Log("HIT!");
+                                playerScript.OnHit(1,200);
                             }
                         }
                         i++;
