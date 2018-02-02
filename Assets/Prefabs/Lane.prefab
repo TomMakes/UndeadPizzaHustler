@@ -56,4 +56,5 @@ MonoBehaviour:
   startX: 12.5
   individuals: []
   isActive: 1
-  ZedPrefab: {fileID: 1044424447882388, guid: 0cfedc0ffd5e1504b9ea710597556f8d, type: 2}
+  zedCode: 0
+  ZedPrefab: {fileID: 1117208192828658, guid: 96e885fcc85b0bc4fa33e9debaabdaec, type: 2}
