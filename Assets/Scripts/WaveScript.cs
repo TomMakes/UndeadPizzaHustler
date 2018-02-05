@@ -9,10 +9,13 @@ public class WaveScript : MonoBehaviour {
     public List<GameObject> individuals;
     public bool isActive = false;
     public int zedCode;
-    public GameObject ZedPrefab;
+    public GameObject TopZedPrefab;
+    public GameObject HMidZedPrefab;
+    public GameObject LMidZedPrefab;
+    public GameObject BotZedPrefab;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         xPosition = startX;
 	}
 
@@ -28,28 +31,28 @@ public class WaveScript : MonoBehaviour {
         zedCode = incZedCode;
         if (zedCode % 2 == 1)
         {//lane 0
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(BotZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(0);
             individuals[0]=temp;
         }
         if (zedCode % 4 > 1)
         {//lane 1
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(LMidZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(1);
             individuals[1] = temp;
         }
         if (zedCode % 8 > 3)
         {//lane 2
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(HMidZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(2);
             individuals[2] = temp;
         }
         if (zedCode % 16 > 7)
         {//lane 3
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(TopZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(3);
             individuals[3] = temp;

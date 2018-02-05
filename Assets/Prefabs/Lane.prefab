@@ -57,4 +57,11 @@ MonoBehaviour:
   individuals: []
   isActive: 1
   zedCode: 0
-  ZedPrefab: {fileID: 1117208192828658, guid: 96e885fcc85b0bc4fa33e9debaabdaec, type: 2}
+  TopZedPrefab: {fileID: 1954032714710896, guid: 31eee3b877a3d234b8cca621287a6000,
+    type: 2}
+  HMidZedPrefab: {fileID: 1954032714710896, guid: 31eee3b877a3d234b8cca621287a6000,
+    type: 2}
+  LMidZedPrefab: {fileID: 1117208192828658, guid: 96e885fcc85b0bc4fa33e9debaabdaec,
+    type: 2}
+  BotZedPrefab: {fileID: 1117208192828658, guid: 96e885fcc85b0bc4fa33e9debaabdaec,
+    type: 2}
