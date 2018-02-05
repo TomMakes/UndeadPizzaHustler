@@ -49,6 +49,17 @@ public class PlayerManager : MonoBehaviour {
             }
 
         }
+
+		if (Input.GetKeyDown("a"))
+		{
+			newPosition.x -= 0.1f;
+		}
+
+		if (Input.GetKeyDown("d"))
+		{
+			newPosition.x += 0.1f;
+			print ("Moving Forward!");
+		}
         time += Time.deltaTime;
         score = (int)time * 100;
         scoreText.text = "Score: " + score;

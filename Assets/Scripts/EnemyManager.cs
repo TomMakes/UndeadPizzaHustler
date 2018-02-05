@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour {
     {
         playerScript = Player.GetComponent<PlayerManager>();
 
-        changeImage = GetComponent<SpriteRenderer>();
+        //changeImage = GetComponent<SpriteRenderer>();
 		
 	}
 	
@@ -57,14 +57,14 @@ public class EnemyManager : MonoBehaviour {
                     {
                         recentlySpawned = true;
                     }                
-                    if(zeddy.xPosition < Player.transform.position.x + 2.5f && zeddy.xPosition > Player.transform.position.x - 2.5f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+                     if(zeddy.xPosition < Player.transform.position.x + 2.5f && zeddy.xPosition > Player.transform.position.x - 2.5f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
                             if(zeddy.IsColliding(playerScript.layer)){
                                 Debug.Log("HIT!");
                                 playerScript.OnHit(1,200);
 
                             }
-                        }                  
+                        }     
                     
                 }
                 else
