@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour {
     {
         playerScript = Player.GetComponent<PlayerManager>();
 
-        changeImage = GetComponent<SpriteRenderer>();
+        
 		
 	}
 	
