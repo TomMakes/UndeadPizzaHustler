@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour {
     public int layer=0;
     Vector3 newPosition;
     public int lives;
+    public int highscore;
     public int score = 0;
     float time=0;
     bool ifExist;
@@ -63,6 +64,11 @@ public class PlayerManager : MonoBehaviour {
         }
         if (lives <= 0)
         {
+            if(score>=highscore)
+            {
+                highscore = score;
+                PlayerPrefs.SetInt("HighScore", highscore);
+            }
             PlayerPrefs.SetInt("GameScore", score);
             SceneManager.LoadScene("GameOverScene");
 
