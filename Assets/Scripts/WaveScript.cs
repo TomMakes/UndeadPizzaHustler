@@ -10,15 +10,21 @@ public class WaveScript : MonoBehaviour {
     public bool isActive = false;
     public int zedCode;
     public GameObject ZedPrefab;
+    public float scoreMod;
+    public float time;
+    public GameObject ply = null;
 
 	// Use this for initialization
 	void Start () {
         xPosition = startX;
+        scoreMod = 1.0f;
+        time = 0.0f;
 	}
 
 
-    public void Spawn(int incZedCode)
+    public void Spawn(int incZedCode, GameObject player)
     {
+        ply = player;
         GameObject empty = new GameObject();
         individuals.Add(empty);
         individuals.Add(empty);
@@ -30,28 +36,36 @@ public class WaveScript : MonoBehaviour {
         {//lane 0
             GameObject temp = GameObject.Instantiate(ZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
-            tempscript.Spawn(0);
+            //tempscript.scoreMod = this.scoreMod;
+            //tempscript.ply = this.ply;
+            tempscript.Spawn(0, this.scoreMod, ply);
             individuals[0]=temp;
         }
         if (zedCode % 4 > 1)
         {//lane 1
             GameObject temp = GameObject.Instantiate(ZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
-            tempscript.Spawn(1);
+            //tempscript.scoreMod = this.scoreMod;
+            //tempscript.ply = this.ply;
+            tempscript.Spawn(1, this.scoreMod, ply);
             individuals[1] = temp;
         }
         if (zedCode % 8 > 3)
         {//lane 2
             GameObject temp = GameObject.Instantiate(ZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
-            tempscript.Spawn(2);
+            //tempscript.scoreMod = this.scoreMod;
+            //tempscript.ply = this.ply;
+            tempscript.Spawn(2, this.scoreMod, ply);
             individuals[2] = temp;
         }
         if (zedCode % 16 > 7)
         {//lane 3
             GameObject temp = GameObject.Instantiate(ZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
-            tempscript.Spawn(3);
+            //tempscript.scoreMod = this.scoreMod;
+            //tempscript.ply = this.ply;
+            tempscript.Spawn(3, this.scoreMod, ply);
             individuals[3] = temp;
         }
     }
@@ -120,7 +134,15 @@ public class WaveScript : MonoBehaviour {
             //Keep moving the enemy to the left of the screen
             if (gameObject.transform.position.x > -startX)
             {
-                xPosition -= speed * Time.deltaTime;
+                xPosition -= speed * scoreMod * Time.deltaTime;
+                for (int i = 0; i < individuals.Count; i++)
+                /*{
+                    //ZedScript z = individuals[i].GetComponent<ZedScript>();
+                    //zomb.GetComponent<ZedScript>().SetMod(this.scoreMod);
+                    //z.SetMod(this.scoreMod);
+                    //individuals[i].GetComponent<ZedScript>().SetMod(this.scoreMod);
+                    
+                }*/
                 gameObject.transform.position = new Vector3(xPosition,0,0);
                 isActive = true;
             }
@@ -143,6 +165,11 @@ public class WaveScript : MonoBehaviour {
         {
             individuals.RemoveAt(0);
         }
+    }
+
+    public void SetModifiers(float sMod, float t){
+        this.scoreMod = sMod;
+        this.time = t;
     }
 }
 

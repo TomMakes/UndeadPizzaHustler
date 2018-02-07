@@ -58,3 +58,6 @@ MonoBehaviour:
   isActive: 1
   zedCode: 0
   ZedPrefab: {fileID: 1117208192828658, guid: 96e885fcc85b0bc4fa33e9debaabdaec, type: 2}
+  scoreMod: 0
+  time: 0
+  ply: {fileID: 0}
