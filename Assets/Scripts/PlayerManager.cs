@@ -52,12 +52,12 @@ public class PlayerManager : MonoBehaviour {
 
         }
 
-		if (Input.GetKeyDown("a"))
+		if (Input.GetKey("a"))
 		{
 			newPosition.x -= 0.1f;
 		}
 
-		if (Input.GetKeyDown("d"))
+		if (Input.GetKey("d"))
 		{
 			newPosition.x += 0.1f;
 			print ("Moving Forward!");
