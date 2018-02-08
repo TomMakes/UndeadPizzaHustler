@@ -18,8 +18,7 @@ public class EnemyManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        playerScript = Player.GetComponent<PlayerManager>();
-		
+        playerScript = Player.GetComponent<PlayerManager>();		
 	}
 	
 	// Update is called once per frame
@@ -42,16 +41,14 @@ public class EnemyManager : MonoBehaviour {
                 temp.Spawn(q);                
             }
 
-
             recentlySpawned = false;
-
+      
             foreach (GameObject obby in waveList) {
 				//Grab the script from the enemy
 				WaveScript zeddy = obby.GetComponent<WaveScript> ();          
                 if(zeddy.isActive)
                 {
                  if(zeddy.xPosition > spawnBoundry)
-
                     {
                         recentlySpawned = true;
                     }    
@@ -61,23 +58,14 @@ public class EnemyManager : MonoBehaviour {
                             if(zeddy.IsColliding(playerScript.layer)){
                                 Debug.Log("HIT!");
                                 playerScript.OnHit(1,200);
-
                             }
-                        }     
-                    
+                        }                    
                 }
                 else
                 {
                     toDelete = true;
 
                 }
-
-
-
-               
-
-                //If there are more than one enemy type take a random enemy obstacle and run it back through the screen
-
             }
         }
 
