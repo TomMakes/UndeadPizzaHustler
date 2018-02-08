@@ -9,45 +9,54 @@ public class WaveScript : MonoBehaviour {
     public float startX;
     public List<GameObject> individuals;
     public bool isActive = false;
-    int zedCode;
-    public GameObject ZedPrefab;
+    public int zedCode;
+    public GameObject TopZedPrefab;
+    public GameObject HMidZedPrefab;
+    public GameObject LMidZedPrefab;
+    public GameObject BotZedPrefab;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         xPosition = startX;
 	}
 
 
     public void Spawn(int incZedCode)
     {
+        GameObject empty = new GameObject();
+        individuals.Add(empty);
+        individuals.Add(empty);
+        individuals.Add(empty);
+        individuals.Add(empty);
+
         zedCode = incZedCode;
         if (zedCode % 2 == 1)
         {//lane 0
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(BotZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(0);
-            individuals.Add(temp);
+            individuals[0]=temp;
         }
         if (zedCode % 4 > 1)
         {//lane 1
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(LMidZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(1);
-            individuals.Add(temp);
+            individuals[1] = temp;
         }
         if (zedCode % 8 > 3)
         {//lane 2
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(HMidZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(2);
-            individuals.Add(temp);
+            individuals[2] = temp;
         }
         if (zedCode % 16 > 7)
         {//lane 3
-            GameObject temp = GameObject.Instantiate(ZedPrefab);
+            GameObject temp = Instantiate(TopZedPrefab);
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             tempscript.Spawn(3);
-            individuals.Add(temp);
+            individuals[3] = temp;
         }
     }
 
@@ -58,6 +67,9 @@ public class WaveScript : MonoBehaviour {
             case 0:
                 if (zedCode % 2 == 1)
                 {
+                    Destroy(individuals[0]);
+                    individuals[0] = new GameObject();
+                    zedCode -= 1;
                     return true;
                 }
                 else
@@ -68,6 +80,9 @@ public class WaveScript : MonoBehaviour {
              case 1:
                 if (zedCode % 4 > 1)
                 {
+                    Destroy(individuals[1]);
+                    individuals[1] = new GameObject();
+                    zedCode -= 2;
                     return true;
                 }
                 else
@@ -77,6 +92,9 @@ public class WaveScript : MonoBehaviour {
             case 2:
                 if (zedCode % 8 > 3 )
                 {
+                    Destroy(individuals[2]);
+                    individuals[2] = new GameObject();
+                    zedCode -= 4;
                     return true;
                 }
                 else
@@ -86,6 +104,9 @@ public class WaveScript : MonoBehaviour {
             case 3:
                 if (zedCode % 16 > 7)
                 {
+                    Destroy(individuals[3]);
+                    individuals[3] = new GameObject();
+                    zedCode -= 8;
                     return true;
                 }
                 else
@@ -114,6 +135,19 @@ public class WaveScript : MonoBehaviour {
             }
         }
 
+    }
+
+    
+
+    public void Purge() { 
+        foreach(GameObject Zed in individuals)
+        {
+            Object.Destroy(Zed);          
+        }
+        while(individuals.Count > 0)
+        {
+            individuals.RemoveAt(0);
+        }
     }
 }
 

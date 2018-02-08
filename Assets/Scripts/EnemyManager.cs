@@ -19,8 +19,6 @@ public class EnemyManager : MonoBehaviour {
     void Start()
     {
         playerScript = Player.GetComponent<PlayerManager>();
-
-        //changeImage = GetComponent<SpriteRenderer>();
 		
 	}
 	
@@ -56,8 +54,9 @@ public class EnemyManager : MonoBehaviour {
 
                     {
                         recentlySpawned = true;
-                    }                
-                     if(zeddy.xPosition < Player.transform.position.x + 2.5f && zeddy.xPosition > Player.transform.position.x - 2.5f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+                    }    
+                    if(zeddy.xPosition < Player.transform.position.x + 1.8f && zeddy.xPosition > Player.transform.position.x - 1.8f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
                             if(zeddy.IsColliding(playerScript.layer)){
                                 Debug.Log("HIT!");
@@ -75,20 +74,21 @@ public class EnemyManager : MonoBehaviour {
 
 
 
-                if (toDelete == true)
-                {//garbage collection
-                    Object.Destroy(obby);
-                    waveList.Remove(obby);
-                    //zedList.RemoveAt(0);
-                    toDelete = false;
-                }
+               
 
                 //If there are more than one enemy type take a random enemy obstacle and run it back through the screen
 
             }
         }
 
-
+        if (toDelete == true)
+        {//garbage collection
+            WaveScript wavey = waveList[0].GetComponent<WaveScript>();
+            wavey.Purge();
+            Destroy(waveList[0]);
+            waveList.RemoveAt(0);            
+            toDelete = false;
+        }
 
     }
 }
