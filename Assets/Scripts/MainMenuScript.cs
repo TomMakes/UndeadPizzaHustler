@@ -13,15 +13,15 @@ public class MainMenuScript : MonoBehaviour {
 	void Update () {
 		
 	}
-    void Play()
+    public void Play()
     {
-
+        SceneManager.LoadScene("Testing_Koh");
     }
-    void LoadHighScore()
+    public void LoadHighScore()
     {
-
+        SceneManager.LoadScene("HighscoreScene");
     }
-    void QuitGame()
+    public void QuitGame()
     {
         Application.Quit();
     }

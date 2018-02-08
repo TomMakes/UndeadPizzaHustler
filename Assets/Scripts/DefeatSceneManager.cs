@@ -7,11 +7,15 @@ public class DefeatSceneManager : MonoBehaviour {
 
     public Text gameScore;
     public Text highScore;
+    public Text secondPlaceScore;
+    public Text thirdPlaceScore;
     // Use this for initialization
     void Start()
     {
         gameScore.text = "Game Score: "+PlayerPrefs.GetInt("GameScore").ToString();
-        highScore.text = "High Score: "+PlayerPrefs.GetInt("HighScore").ToString();
+        highScore.text = "1. "+PlayerPrefs.GetInt("0HighScore").ToString();
+        secondPlaceScore.text = "2. " + PlayerPrefs.GetInt("1HighScore").ToString();
+        thirdPlaceScore.text = "3. " + PlayerPrefs.GetInt("2HighScore").ToString();
     }
 
     // Update is called once per frame
