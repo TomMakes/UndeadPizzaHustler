@@ -1,12 +1,11 @@
 fileFormatVersion: 2
 
-guid: 469a4e4a70302e94f86f69d8e70936c4
-timeCreated: 1517710946
-licenseType: Free
-
+guid: c8dab80d4709e504aac5628704b3c574
+timeCreated: 1517412898
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
-  externalObjects: {}
+
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
