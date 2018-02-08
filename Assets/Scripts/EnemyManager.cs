@@ -49,43 +49,39 @@ public class EnemyManager : MonoBehaviour {
                 temp.Spawn(q, Player);                
             }
 
-
             recentlySpawned = false;
-
+      
             foreach (GameObject obby in waveList) {
 				//Grab the script from the enemy
 				WaveScript zeddy = obby.GetComponent<WaveScript> ();          
                 if(zeddy.isActive)
                 {
 
+
                     zeddy.SetModifiers(scoreMod, time);
 
                     if (zeddy.xPosition > spawnBoundry)
                     {
                         recentlySpawned = true;
-                    }                
-                    /*if(zeddy.xPosition < Player.transform.position.x + 1.8f && zeddy.xPosition > Player.transform.position.x - 1.8f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+                    }               
+                 
+                    if(zeddy.xPosition < Player.transform.position.x + 1.8f && zeddy.xPosition > Player.transform.position.x - 1.8f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
                             if(zeddy.IsColliding(playerScript.layer)){
                                 Debug.Log("HIT!");
                                 playerScript.OnHit(1,200);
-
                             }
-                        }  */             
-                    
+
+                        }          
+                                     
+
                 }
                 else
                 {
                     toDelete = true;
 
                 }
-
-
-
-               
-
-                //If there are more than one enemy type take a random enemy obstacle and run it back through the screen
-
             }
         }
 
