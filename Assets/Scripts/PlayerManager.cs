@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour {
     public int lives;
     public int highscore;
     public int score = 0;
+    int oldScore;
     float time=0;
     bool ifExist;
     public Text scoreText;
@@ -64,15 +65,27 @@ public class PlayerManager : MonoBehaviour {
         }
         if (lives <= 0)
         {
-            if(score>=highscore)
+            for (int i = 0; i < 10; i++)
             {
-                highscore = score;
-                PlayerPrefs.SetInt("HighScore", highscore);
+                if(PlayerPrefs.HasKey(i+"HighScore"))
+                {
+                    if(PlayerPrefs.GetInt(i+"HighScore")<score)
+                    {
+                        oldScore = PlayerPrefs.GetInt(i + "HighScore");
+                        PlayerPrefs.SetInt(i + "HighScore", score);
+                        score = oldScore;
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt(i + "HighScore", score);
+                    score = 0;
+                }
             }
             PlayerPrefs.SetInt("GameScore", score);
             SceneManager.LoadScene("GameOverScene");
-
         }
+        
     }
     public void OnHit(int hit,int penalty)
     {
