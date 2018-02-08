@@ -19,7 +19,6 @@ public class EnemyManager : MonoBehaviour {
     void Start()
     {
         playerScript = Player.GetComponent<PlayerManager>();
-        
 		
 	}
 	
@@ -55,15 +54,16 @@ public class EnemyManager : MonoBehaviour {
 
                     {
                         recentlySpawned = true;
-                    }                
+                    }    
                     if(zeddy.xPosition < Player.transform.position.x + 1.8f && zeddy.xPosition > Player.transform.position.x - 1.8f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
+
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
                             if(zeddy.IsColliding(playerScript.layer)){
                                 Debug.Log("HIT!");
                                 playerScript.OnHit(1,200);
 
                             }
-                        }                  
+                        }     
                     
                 }
                 else

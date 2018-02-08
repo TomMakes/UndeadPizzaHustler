@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaveScript : MonoBehaviour {
     public float speed;
     public float xPosition;
+	public float yPosition;
     public float startX;
     public List<GameObject> individuals;
     public bool isActive = false;
@@ -124,6 +125,7 @@ public class WaveScript : MonoBehaviour {
             if (gameObject.transform.position.x > -startX)
             {
                 xPosition -= speed * Time.deltaTime;
+				yPosition = gameObject.transform.position.y;
                 gameObject.transform.position = new Vector3(xPosition,0,0);
                 isActive = true;
             }
