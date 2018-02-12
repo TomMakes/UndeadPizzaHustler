@@ -20,7 +20,7 @@ public class Parallax_Movement : MonoBehaviour {
         newScale.y = 1.7f;
         newScale.z = 1.0f;
         gameObject.transform.localScale = newScale;
-        scoreMod = 1.0f;
+        scoreMod = PlayerManager.speed;
         time = 0.0f;
 	}
 	
@@ -28,10 +28,10 @@ public class Parallax_Movement : MonoBehaviour {
 	void Update () {
         // move the sprite down; currently hard coded but can be adjusted for speed
         time += Time.deltaTime;
-        scoreMod = (time * 100.0f) / 1000.0f;
-        if (scoreMod < 1.0f) { scoreMod = 1.0f; }
+        scoreMod = PlayerManager.speed;
+        //if (scoreMod < 1.0f) { scoreMod = 1.0f; }
         newPos = gameObject.transform.position;
-        newPos.x -= speed.x * scoreMod * Time.deltaTime;
+        newPos.x -= speed.x * PlayerManager.speed * Time.deltaTime;
         // checks if the sprite is outside the camera; yes, hard coded for now until I can figure out the right command
         // to check whether the camera can see it
         if(newPos.x < -25.0f){

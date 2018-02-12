@@ -25,8 +25,8 @@ public class ZedScript : MonoBehaviour {
         position.y = -3.75f + (2.5f * whichLane);
         position.z = 1;
         gameObject.transform.position = position;
-        //scoreMod = 1.0f;
-	}
+        scoreMod = PlayerManager.speed;
+    }
 
     public void Spawn(int incLane, float sMod, GameObject player)
     {
@@ -37,7 +37,8 @@ public class ZedScript : MonoBehaviour {
         gameObject.transform.position = position;
         isActive = true;
         whichLane = incLane;
-        scoreMod = sMod;
+        //scoreMod = sMod;
+        //scoreMod = PlayerManager.speed;
         ply = player;
     }
 
@@ -48,7 +49,7 @@ public class ZedScript : MonoBehaviour {
             //Keep moving the enemy to the left of the screen
             if (gameObject.transform.position.x > endX)
             {
-                position -= speed * scoreMod * Time.deltaTime;
+                position -= speed * PlayerManager.speed * Time.deltaTime;
                 gameObject.transform.position = position;
                 isActive = true;
                 CollisionCheck(ply);

@@ -22,7 +22,7 @@ public class WaveScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         xPosition = startX;
-        scoreMod = 1.0f;
+        scoreMod = PlayerManager.speed;
         time = 0.0f;
 	}
 
@@ -139,7 +139,7 @@ public class WaveScript : MonoBehaviour {
             //Keep moving the enemy to the left of the screen
             if (gameObject.transform.position.x > -startX)
             {
-                xPosition -= speed * scoreMod * Time.deltaTime;
+                xPosition -= speed * PlayerManager.speed * Time.deltaTime;
                 for (int i = 0; i < individuals.Count; i++)
                 /*{
                     //ZedScript z = individuals[i].GetComponent<ZedScript>();

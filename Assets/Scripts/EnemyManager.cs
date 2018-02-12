@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour {
     void Start()
     {
         playerScript = Player.GetComponent<PlayerManager>();
-        scoreMod = 1.0f;
+        scoreMod = PlayerManager.speed;
         time = 0.0f;
 	}
 	
@@ -35,8 +35,8 @@ public class EnemyManager : MonoBehaviour {
 
 		if (runEnemy) {
             time += Time.deltaTime;
-            scoreMod = (time * 100.0f / 1000.0f);
-            if (scoreMod < 1.0f) { scoreMod = 1.0f; }
+            scoreMod = PlayerManager.speed;
+            //if (scoreMod < 1.0f) { scoreMod = 1.0f; }
 
             if (waveList.Count < maxZeds && !recentlySpawned)
             {
@@ -58,7 +58,7 @@ public class EnemyManager : MonoBehaviour {
                 {
 
 
-                    zeddy.SetModifiers(scoreMod, time);
+                    //zeddy.SetModifiers(scoreMod, time);
 
                     if (zeddy.xPosition > spawnBoundry)
                     {

@@ -16,13 +16,15 @@ public class PlayerManager : MonoBehaviour {
     public Sprite health2;
     public Sprite health1;
 
+    public static float speed;
+
     // Use this for initialization
     void Start ()
     {
 
         newPosition = gameObject.transform.position;
         PlayerPrefs.SetInt("GameScore", score);
-        
+        speed = 1.0f;
         ifExist = true;
         
 	}
@@ -54,18 +56,35 @@ public class PlayerManager : MonoBehaviour {
 
 		if (Input.GetKey("a"))
 		{
-			newPosition.x -= 0.1f;
+			newPosition.x -= 5 * speed * Time.deltaTime;
+            if(newPosition.x < -12.5f)
+            {
+                newPosition.x = -12.5f;
+            }
+            
 		}
 
 		if (Input.GetKey("d"))
 		{
-			newPosition.x += 0.1f;
-			print ("Moving Forward!");
-		}
+			newPosition.x += 2.5f* speed * Time.deltaTime;
+            if (newPosition.x > 12.5f)
+            {
+                newPosition.x = 12.5f;
+            }
+
+        }
         time += Time.deltaTime;
         score = (int)time * 100;
+        speed = 1 + (time / 10.0f);
+        if (speed < 1.0f) { speed = 1.0f; }
+        //if (speed > 1.0f && speed < 1.25f ) { speed = 1.25f; }
+        //if (speed > 1.25f && speed < 1.5f) { speed = 1.5f; }
+        //if (speed > 1.5f && speed < 1.75f) { speed = 1.25f; }
+        else if (speed > 2.5f) { speed = 2.5f; }
+        Debug.Log(speed);
         scoreText.text = "Score: " + score;
         gameObject.transform.position = newPosition;
+
         if (lives == 2)
         {
             lifebar.sprite = health2;
