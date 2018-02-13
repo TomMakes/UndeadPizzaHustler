@@ -36,16 +36,12 @@ public class EnemyManager : MonoBehaviour {
 		if (runEnemy) {
             time += Time.deltaTime;
             scoreMod = PlayerManager.speed;
-            //if (scoreMod < 1.0f) { scoreMod = 1.0f; }
-
             if (waveList.Count < maxZeds && !recentlySpawned)
-            {
+            {//If we have an open spawn slot, and we have not spawned recently
                 waveList.Add(Instantiate(WavePrefab));
                 WaveScript temp = waveList[waveList.Count - 1].GetComponent<WaveScript>();
                 temp.SetModifiers(scoreMod, time);
-                int q = Random.Range(0, 15);
-                //int q = testVar;
-                Debug.Log(q);
+                int q = Random.Range(0, 15);                
                 temp.Spawn(q, Player);                
             }
 
@@ -56,10 +52,6 @@ public class EnemyManager : MonoBehaviour {
 				WaveScript zeddy = obby.GetComponent<WaveScript> ();          
                 if(zeddy.isActive)
                 {
-
-
-                    //zeddy.SetModifiers(scoreMod, time);
-
                     if (zeddy.xPosition > spawnBoundry)
                     {
                         recentlySpawned = true;

@@ -52,7 +52,7 @@ public class ZedScript : MonoBehaviour {
                 position -= speed * PlayerManager.speed * Time.deltaTime;
                 gameObject.transform.position = position;
                 isActive = true;
-                CollisionCheck(ply);
+               // CollisionCheck(ply);
             }
             else
             {
@@ -73,12 +73,13 @@ public class ZedScript : MonoBehaviour {
 	}
 
     bool CollisionCheck(GameObject Player)
-    {
+    {/* THIS CODE IS 
+        DEPRECATED.
         if (isActive == true)
         {
             if (this.position.x < Player.transform.position.x + 1.8f && this.position.x > Player.transform.position.x - 1.8f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
             {//if the first 3 zeds are close enough to the player to maybe hit, check em
-                if (this.position.y < Player.transform.position.y + 1.8f && this.position.y > Player.transform.position.y - 1.8f)
+                if (whichLane == Player.layer)
                 {
                     Debug.Log("HIT!");
                     Player.GetComponent<PlayerManager>().OnHit(1, 200);
@@ -87,7 +88,7 @@ public class ZedScript : MonoBehaviour {
                     return true;
                 }
             }
-        }
+        }*/
         return false;
     }
 

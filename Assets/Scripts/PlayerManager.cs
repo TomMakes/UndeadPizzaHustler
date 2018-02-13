@@ -57,9 +57,9 @@ public class PlayerManager : MonoBehaviour {
 		if (Input.GetKey("a"))
 		{
 			newPosition.x -= 5 * speed * Time.deltaTime;
-            if(newPosition.x < -12.5f)
+            if(newPosition.x < -10f)
             {
-                newPosition.x = -12.5f;
+                newPosition.x = -10f;
             }
             
 		}
@@ -67,19 +67,16 @@ public class PlayerManager : MonoBehaviour {
 		if (Input.GetKey("d"))
 		{
 			newPosition.x += 2.5f* speed * Time.deltaTime;
-            if (newPosition.x > 12.5f)
+            if (newPosition.x > 10f)
             {
-                newPosition.x = 12.5f;
+                newPosition.x = 10f;
             }
 
         }
         time += Time.deltaTime;
         score = (int)time * 100;
         speed = 1 + (time / 10.0f);
-        if (speed < 1.0f) { speed = 1.0f; }
-        //if (speed > 1.0f && speed < 1.25f ) { speed = 1.25f; }
-        //if (speed > 1.25f && speed < 1.5f) { speed = 1.5f; }
-        //if (speed > 1.5f && speed < 1.75f) { speed = 1.25f; }
+        if (speed < 1.0f) { speed = 1.0f; }       
         else if (speed > 2.5f) { speed = 2.5f; }
         Debug.Log(speed);
         scoreText.text = "Score: " + score;

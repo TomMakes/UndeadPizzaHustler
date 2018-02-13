@@ -43,7 +43,7 @@ public class WaveScript : MonoBehaviour {
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             //tempscript.scoreMod = this.scoreMod;
             //tempscript.ply = this.ply;
-            tempscript.Spawn(0, this.scoreMod, ply);
+            tempscript.Spawn(0, scoreMod, ply);
             individuals[0]=temp;
         }
         if (zedCode % 4 > 1)
@@ -52,7 +52,7 @@ public class WaveScript : MonoBehaviour {
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             //tempscript.scoreMod = this.scoreMod;
             //tempscript.ply = this.ply;
-            tempscript.Spawn(1, this.scoreMod, ply);
+            tempscript.Spawn(1, scoreMod, ply);
             individuals[1] = temp;
         }
         if (zedCode % 8 > 3)
@@ -61,7 +61,7 @@ public class WaveScript : MonoBehaviour {
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             //tempscript.scoreMod = this.scoreMod;
             //tempscript.ply = this.ply;
-            tempscript.Spawn(2, this.scoreMod, ply);
+            tempscript.Spawn(2, scoreMod, ply);
             individuals[2] = temp;
         }
         if (zedCode % 16 > 7)
@@ -70,7 +70,7 @@ public class WaveScript : MonoBehaviour {
             ZedScript tempscript = temp.GetComponent<ZedScript>();
             //tempscript.scoreMod = this.scoreMod;
             //tempscript.ply = this.ply;
-            tempscript.Spawn(3, this.scoreMod, ply);
+            tempscript.Spawn(3, scoreMod, ply);
             individuals[3] = temp;
         }
     }
@@ -164,7 +164,7 @@ public class WaveScript : MonoBehaviour {
     public void Purge() { 
         foreach(GameObject Zed in individuals)
         {
-            Object.Destroy(Zed);          
+            Destroy(Zed);          
         }
         while(individuals.Count > 0)
         {
@@ -173,8 +173,8 @@ public class WaveScript : MonoBehaviour {
     }
 
     public void SetModifiers(float sMod, float t){
-        this.scoreMod = sMod;
-        this.time = t;
+        scoreMod = sMod;
+        time = t;
     }
 }
 
