@@ -15,7 +15,7 @@ public class MainMenuScript : MonoBehaviour {
 	}
     public void Play()
     {
-        SceneManager.LoadScene("Testing_Koh");
+        SceneManager.LoadScene("Petritsch_Testing");
     }
     public void LoadHighScore()
     {

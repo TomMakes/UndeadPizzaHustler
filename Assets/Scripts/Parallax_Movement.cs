@@ -16,8 +16,8 @@ public class Parallax_Movement : MonoBehaviour {
         // start by setting the position and scale
         // regardless, recommend 2 sprites: one at -12.5 x 0 y, the other at 12.5 x 0 y
         newPos = gameObject.transform.position;
-        newScale.x = 3.2f;
-        newScale.y = 1.7f;
+        newScale.x = (3.2f*.626f);
+        newScale.y = (1.7f * .626f);
         newScale.z = 1.0f;
         gameObject.transform.localScale = newScale;
         scoreMod = PlayerManager.speed;

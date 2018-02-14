@@ -77,7 +77,7 @@ public class PlayerManager : MonoBehaviour {
         score = (int)time * 100;
         speed = 1 + (time / 10.0f);
         if (speed < 1.0f) { speed = 1.0f; }       
-        else if (speed > 2.5f) { speed = 2.5f; }
+        else if (speed > 2f) { speed = 2f; }
         Debug.Log(speed);
         scoreText.text = "Score: " + score;
         gameObject.transform.position = newPosition;
