@@ -25,7 +25,7 @@ public class DefeatSceneManager : MonoBehaviour {
     }
     public void Restart()
     {
-        SceneManager.LoadScene("Testing_Koh");
+        SceneManager.LoadScene("Petritsch_Testing");
     }
     public void EndGame()
     {
