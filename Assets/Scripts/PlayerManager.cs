@@ -34,9 +34,9 @@ public class PlayerManager : MonoBehaviour {
         newPosition = gameObject.transform.position;
         newPosition.y = -3.75f + (2.5f * layer);
 
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-            layer++;
+            layer++; ;
             if(layer > 3)
             {
                 layer = 3;
@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("s") || Input.GetKeyDown("down"))
         {
             layer--;
             if (layer < 0)
@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour {
 
         }
 
-		if (Input.GetKey("a"))
+		if (Input.GetKey("a") || Input.GetKey("left"))
 		{
 			newPosition.x -= 5 * speed * Time.deltaTime;
             if(newPosition.x < -10f)
@@ -64,7 +64,7 @@ public class PlayerManager : MonoBehaviour {
             
 		}
 
-		if (Input.GetKey("d"))
+		if (Input.GetKey("d") || Input.GetKey("right"))
 		{
 			newPosition.x += 2.5f* speed * Time.deltaTime;
             if (newPosition.x > 10f)
@@ -77,7 +77,7 @@ public class PlayerManager : MonoBehaviour {
         score = (int)time * 100;
         speed = 1 + (time / 10.0f);
         if (speed < 1.0f) { speed = 1.0f; }       
-        else if (speed > 2f) { speed = 2f; }
+        else if (speed > 2.5f) { speed = 2.5f; }
         Debug.Log(speed);
         scoreText.text = "Score: " + score;
         gameObject.transform.position = newPosition;
