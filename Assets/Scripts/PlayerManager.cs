@@ -16,6 +16,11 @@ public class PlayerManager : MonoBehaviour {
     public Sprite health2;
     public Sprite health1;
 
+	//Sound design variables
+	public AudioClip[] moves;
+
+	private AudioSource source;
+
     public static float speed;
 
     // Use this for initialization
@@ -36,6 +41,7 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
+			PlayMoveSound ();
             layer++; ;
             if(layer > 3)
             {
@@ -46,6 +52,7 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKeyDown("s") || Input.GetKeyDown("down"))
         {
+			PlayMoveSound ();
             layer--;
             if (layer < 0)
             {
@@ -126,4 +133,12 @@ public class PlayerManager : MonoBehaviour {
         lives -= hit;
         score -= penalty;
     }
+
+	//Grabs a random sound to play
+	public void PlayMoveSound(){
+		AudioSource audio = GetComponent<AudioSource> ();
+		int soundToPlay = Random.Range (0, 6);
+		audio.clip = moves [soundToPlay];
+		audio.Play ();
+	}
 }
