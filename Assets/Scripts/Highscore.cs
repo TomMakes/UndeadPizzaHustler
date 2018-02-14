@@ -19,9 +19,9 @@ public class Highscore : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        firstPlace.text="1. "+ PlayerPrefs.GetInt("0HighScore").ToString();
-        secondPlace.text="2. "+ PlayerPrefs.GetInt("1HighScore").ToString();
-        thirdPlace.text = "3. " + PlayerPrefs.GetInt("2HighScore").ToString();
+        firstPlace.text="1. " + PlayerPrefs.GetString("0Names") + "............" + PlayerPrefs.GetInt("0HighScore").ToString();
+        secondPlace.text="2. " + PlayerPrefs.GetString("1Names") + "............" + PlayerPrefs.GetInt("1HighScore").ToString();
+        thirdPlace.text = "3. " + PlayerPrefs.GetString("2Names")+"............"+ PlayerPrefs.GetInt("2HighScore").ToString();
         fourthPlace.text = "4. " + PlayerPrefs.GetInt("3HighScore").ToString();
         fifthPlace.text = "5. " + PlayerPrefs.GetInt("4HighScore").ToString();
         sixthPlace.text = "6. " + PlayerPrefs.GetInt("5HighScore").ToString();
