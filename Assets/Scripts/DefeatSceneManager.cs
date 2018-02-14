@@ -29,6 +29,6 @@ public class DefeatSceneManager : MonoBehaviour {
     }
     public void EndGame()
     {
-        
+        Application.Quit();
     }
 }
