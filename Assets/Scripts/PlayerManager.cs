@@ -41,22 +41,29 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-			PlayMoveSound ();
+			
             layer++; ;
-            if(layer > 3)
+            if (layer > 3)
             {
                 layer = 3;
             }
-
+            else
+            {
+                PlayMoveSound();
+            }
         }
 
         if (Input.GetKeyDown("s") || Input.GetKeyDown("down"))
         {
-			PlayMoveSound ();
+			
             layer--;
             if (layer < 0)
             {
                 layer = 0;
+            }
+            else
+            {
+                PlayMoveSound();
             }
 
         }
