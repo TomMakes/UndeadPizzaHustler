@@ -60,13 +60,15 @@ public class DefeatSceneManager : MonoBehaviour {
     }
     public void Restart()
     {
-        SceneManager.LoadScene("Testing_Koh");
+        SceneManager.LoadScene("Petritsch_Testing");
     }
     public void EndGame()
     {
+
         SceneManager.LoadScene("MainMenu");
     }
-    public void ExitWindow()
+    
+        public void ExitWindow()
     {
         recordkeep.SetActive(false);
     }

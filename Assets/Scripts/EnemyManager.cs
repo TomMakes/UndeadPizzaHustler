@@ -13,12 +13,15 @@ public class EnemyManager : MonoBehaviour {
     PlayerManager playerScript;
     public int testVar;
 
-
+    float scoreMod;
+    float time;
 
     // Use this for initialization
     void Start()
     {
-        playerScript = Player.GetComponent<PlayerManager>();		
+        playerScript = Player.GetComponent<PlayerManager>();
+        scoreMod = PlayerManager.speed;
+        time = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -27,18 +30,19 @@ public class EnemyManager : MonoBehaviour {
 		foreach (GameObject obby in waveList) {
 			//Grab the script from the enemy
 			WaveScript wScript = obby.GetComponent<WaveScript> ();
-			
+            wScript.ply = Player;
 		}
 
 		if (runEnemy) {
+            time += Time.deltaTime;
+            scoreMod = PlayerManager.speed;
             if (waveList.Count < maxZeds && !recentlySpawned)
-            {
+            {//If we have an open spawn slot, and we have not spawned recently
                 waveList.Add(Instantiate(WavePrefab));
                 WaveScript temp = waveList[waveList.Count - 1].GetComponent<WaveScript>();
-                int q = Random.Range(0, 15);
-                //int q = testVar;
-                Debug.Log(q);
-                temp.Spawn(q);                
+                temp.SetModifiers(scoreMod, time);
+                int q = Random.Range(0, 15);                
+                temp.Spawn(q, Player);                
             }
 
             recentlySpawned = false;
@@ -48,10 +52,11 @@ public class EnemyManager : MonoBehaviour {
 				WaveScript zeddy = obby.GetComponent<WaveScript> ();          
                 if(zeddy.isActive)
                 {
-                 if(zeddy.xPosition > spawnBoundry)
+                    if (zeddy.xPosition > spawnBoundry)
                     {
                         recentlySpawned = true;
-                    }    
+                    }               
+                 
                     if(zeddy.xPosition < Player.transform.position.x + 1.8f && zeddy.xPosition > Player.transform.position.x - 1.8f)//CHANGE THIS TO PLAYER WIDTH VARIBLE LATER
 
                         {//if the first 3 zeds are close enough to the player to maybe hit, check em
@@ -59,7 +64,10 @@ public class EnemyManager : MonoBehaviour {
                                 Debug.Log("HIT!");
                                 playerScript.OnHit(1,200);
                             }
-                        }                    
+
+                        }          
+                                     
+
                 }
                 else
                 {

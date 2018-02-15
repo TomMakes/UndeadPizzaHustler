@@ -16,13 +16,20 @@ public class PlayerManager : MonoBehaviour {
     public Sprite health2;
     public Sprite health1;
 
+	//Sound design variables
+	public AudioClip[] moves;
+
+	private AudioSource source;
+
+    public static float speed;
+
     // Use this for initialization
     void Start ()
     {
 
         newPosition = gameObject.transform.position;
         PlayerPrefs.SetInt("GameScore", score);
-        
+        speed = 1.0f;
         ifExist = true;
         
 	}
@@ -32,9 +39,10 @@ public class PlayerManager : MonoBehaviour {
         newPosition = gameObject.transform.position;
         newPosition.y = -3.75f + (2.5f * layer);
 
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
-            layer++;
+			PlayMoveSound ();
+            layer++; ;
             if(layer > 3)
             {
                 layer = 3;
@@ -42,8 +50,9 @@ public class PlayerManager : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("s") || Input.GetKeyDown("down"))
         {
+			PlayMoveSound ();
             layer--;
             if (layer < 0)
             {
@@ -52,20 +61,34 @@ public class PlayerManager : MonoBehaviour {
 
         }
 
-		if (Input.GetKeyDown("a"))
+		if (Input.GetKey("a") || Input.GetKey("left"))
 		{
-			newPosition.x -= 0.1f;
+			newPosition.x -= 5 * speed * Time.deltaTime;
+            if(newPosition.x < -10f)
+            {
+                newPosition.x = -10f;
+            }
+            
 		}
 
-		if (Input.GetKeyDown("d"))
+		if (Input.GetKey("d") || Input.GetKey("right"))
 		{
-			newPosition.x += 0.1f;
-			print ("Moving Forward!");
-		}
+			newPosition.x += 2.5f* speed * Time.deltaTime;
+            if (newPosition.x > 10f)
+            {
+                newPosition.x = 10f;
+            }
+
+        }
         time += Time.deltaTime;
         score = (int)time * 100;
+        speed = 1 + (time / 10.0f);
+        if (speed < 1.0f) { speed = 1.0f; }       
+        else if (speed > 2.5f) { speed = 2.5f; }
+        Debug.Log(speed);
         scoreText.text = "Score: " + score;
         gameObject.transform.position = newPosition;
+
         if (lives == 2)
         {
             lifebar.sprite = health2;
@@ -110,4 +133,12 @@ public class PlayerManager : MonoBehaviour {
         lives -= hit;
         score -= penalty;
     }
+
+	//Grabs a random sound to play
+	public void PlayMoveSound(){
+		AudioSource audio = GetComponent<AudioSource> ();
+		int soundToPlay = Random.Range (0, 6);
+		audio.clip = moves [soundToPlay];
+		audio.Play ();
+	}
 }
