@@ -21,6 +21,10 @@ public class MainMenuScript : MonoBehaviour {
     {
         SceneManager.LoadScene("HighscoreScene");
     }
+    public void HelpScene()
+    {
+        SceneManager.LoadScene("InstructionsScene");
+    }
     public void QuitGame()
     {
         Application.Quit();

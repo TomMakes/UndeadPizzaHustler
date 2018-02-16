@@ -64,7 +64,6 @@ public class DefeatSceneManager : MonoBehaviour {
     }
     public void EndGame()
     {
-
         SceneManager.LoadScene("MainMenu");
     }
     
