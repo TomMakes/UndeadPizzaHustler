@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 980173885}
   - component: {fileID: 980173884}
   - component: {fileID: 980173887}
+  - component: {fileID: 980173886}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -488,6 +489,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &980173886
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 980173883}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &980173887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +588,13 @@ MonoBehaviour:
   lifebar: {fileID: 390338097}
   health2: {fileID: 21300000, guid: 229ff09e6a0922147be98f34fbf01313, type: 3}
   health1: {fileID: 21300000, guid: d5ac25bce5533544d831efd948d338c0, type: 3}
-  moves: []
+  moves:
+  - {fileID: 8300000, guid: 4bc792b0e0b8a5e43ac5bf1fa06bb0b6, type: 3}
+  - {fileID: 8300000, guid: da4ee69c23be9bb4eaf5c513a8dec7ee, type: 3}
+  - {fileID: 8300000, guid: 8fe2b04758bda0c48bd2096ec2142d8c, type: 3}
+  - {fileID: 8300000, guid: 77ed70e0ab29e6d4a979df9a5406cee8, type: 3}
+  - {fileID: 8300000, guid: 4c97b751f668aa8418a1d747f76df486, type: 3}
+  - {fileID: 8300000, guid: db331f1bdcc05384f811bb5554ffd3a2, type: 3}
 --- !u!1 &988893844
 GameObject:
   m_ObjectHideFlags: 0
