@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class Highscore : MonoBehaviour
 {
     public Text firstPlace;
@@ -30,7 +30,10 @@ public class Highscore : MonoBehaviour
         ninthPlace.text = "9. " + PlayerPrefs.GetInt("8HighScore").ToString();
         tenthPlace.text = "10. " + PlayerPrefs.GetInt("9HighScore").ToString();
     }
-	
+	public void Back()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 	// Update is called once per frame
 	void Update ()
     {
